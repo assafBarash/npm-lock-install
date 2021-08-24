@@ -13,7 +13,7 @@ function main(packages = '') {
 
   writeFileSync(npmrcFileDir, npmrcFile.replace(getSetPackageLockParams(true)));
 
-  execSync(`npm i ${packages}`);
+  execSync(`npm i ${packages.join(' ')}`);
 
   writeFileSync(
     npmrcFileDir,
@@ -26,5 +26,6 @@ const getSetPackageLockParams = (value) => {
   return [buildParam(!value), buildParam(value)];
 };
 
-const [packages] = process.argv;
+const [, , ...packages] = process.argv;
+
 main(packages);
