@@ -2,7 +2,7 @@
 
 ## What it does?
 
-it update .npm `package-lock=false` before installing given package(s), then it will revert the change
+it update .npmrc `package-lock=false` before installing given package(s), then it will revert the change
 
 ## How to use it?
 
