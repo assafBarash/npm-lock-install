@@ -3,18 +3,15 @@ const { execSync } = require('child_process');
 const { lookup } = require('./utils');
 
 function main(packages = '') {
-  if (!packages) throw Error('package/s arg must included');
+  if (!packages) throw Error('package/s arg must be included');
 
   const npmrcFileDir = lookup('.npmrcFile');
 
-  if (!npmrcFileDir) throw Error("couldn't locate .npmcrc file to update");
+  if (!npmrcFileDir) throw Error("couldn't locate .npmrc file to update");
 
   const npmrcFile = readFileSync(npmrcFileDir);
 
-  writeFileSync(
-    npmrcFileDir,
-    npmrcFile.replace('package-lock=true', getSetPackageLockParams(true))
-  );
+  writeFileSync(npmrcFileDir, npmrcFile.replace(getSetPackageLockParams(true)));
 
   execSync(`npm i ${packages}`);
 
