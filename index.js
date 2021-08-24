@@ -7,13 +7,13 @@ const flags = {
   debug: 'debug',
 };
 
+console.log(packages, packages.includes(`--${flags.debug}`));
+
 main(
   packages.filter(
     (arg) => !Object.values(flags).some((flag) => arg.includes(`--${flag}`))
   ),
   {
-    debug: packages.includes((arg) =>
-      arg.toLowerCase().includes(`--${flags.debug}`)
-    ),
+    debug: packages.includes(`--${flags.debug}`),
   }
 );
