@@ -1,3 +1,6 @@
+const path = require('path');
+const fs = require('fs');
+
 function lookup(file, dir = process.cwd()) {
   const p = path.join(dir, file);
 
