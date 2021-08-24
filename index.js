@@ -3,4 +3,17 @@ const main = require('./main');
 
 const [, , ...packages] = process.argv;
 
-main(packages);
+const flags = {
+  debug: 'debug',
+};
+
+main(
+  packages.filter(
+    (arg) => !Object.values(flags).some((flag) => arg.includes(`--${flag}`))
+  ),
+  {
+    debug: packages.includes((arg) =>
+      arg.toLowerCase().includes(`--${flags.debug}`)
+    ),
+  }
+);

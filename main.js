@@ -2,7 +2,11 @@ const { writeFileSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
 const { lookup } = require('./utils');
 
-function main(packages = '') {
+function main(packages = '', { debug }) {
+  if (debug) {
+    console.log('cwd', process.cwd());
+    console.log('__dirname', __dirname);
+  }
   if (!packages) throw Error('package/s arg must be included');
 
   const npmrcFileDir = lookup('.npmrcFile');
