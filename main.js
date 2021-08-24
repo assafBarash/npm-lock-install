@@ -10,7 +10,7 @@ function main(packages = '', { debug }) {
 
   if (!npmrcFileDir) throw Error("couldn't locate .npmrc file to update");
 
-  const npmrcFile = readFileSync(npmrcFileDir);
+  const npmrcFile = readFileSync(npmrcFileDir).toString();
 
   writeFileSync(npmrcFileDir, npmrcFile.replace(getSetPackageLockParams(true)));
 
