@@ -9,7 +9,7 @@ function main(packages = '', { debug }) {
   }
   if (!packages) throw Error('package/s arg must be included');
 
-  const npmrcFileDir = lookup('.npmrcFile');
+  const npmrcFileDir = lookup({ file: '.npmrcFile', debug });
 
   if (!npmrcFileDir) throw Error("couldn't locate .npmrc file to update");
 
